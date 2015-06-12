@@ -12,8 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+   <?php if($model->isNewRecord!='1'){ ?>
     <?php echo Html::img($model->getUrl(400), array("width"=>250)); ?> 
-
+   <?php } ?>
     <?= $form->field($model, 'id')->textInput() ?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>

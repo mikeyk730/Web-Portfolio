@@ -25,7 +25,7 @@ protected function isOwner($model, $id_field="user_id")
 
 	protected function authLoadModel($id, $id_field="user_id")
 	{
-      $model = $this->loadModel($id);
+      $model = $this->findModel($id);
       $this->ensureAccess($model, $id_field);
       return $model;
    }
@@ -38,12 +38,11 @@ protected function isOwner($model, $id_field="user_id")
 
    protected function saveUploadedImage($filename, $target, $q, $w=0)
    {
-      //$image = \Yii::$app->image->load(\Yii::$app->utility->getPhotoPath('original', $filename));
-      //if ($w > 0){
-      //   $image->resize($w, 0);
-      //}
-      //$image->quality($q);
-      //$image->save(\Yii::$app->utility->getPhotoPath($target, $filename));
+      $image = \Yii::$app->image->load(\Yii::$app->utility->getPhotoPath('original', $filename));
+      if ($w > 0){
+         $image->resize($w, 0);
+      }
+      $image->save(\Yii::$app->utility->getPhotoPath($target, $filename), $q);
    }
 
    protected function processUploadedImage($filename)

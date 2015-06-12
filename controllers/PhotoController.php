@@ -8,11 +8,13 @@ use app\models\PhotoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+use app\components\AuthController;
 
 /**
  * PhotoController implements the CRUD actions for Photo model.
  */
-class PhotoController extends Controller
+class PhotoController extends AuthController
 {
     public function behaviors()
     {
@@ -58,7 +60,7 @@ class PhotoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+   /*public function actionCreate()
     {
         $model = new Photo();
 
@@ -69,7 +71,50 @@ class PhotoController extends Controller
                 'model' => $model,
             ]);
         }
-    }
+        }*/
+
+   public function actionCreate()
+   {
+		$model = new Photo();
+      $model->user_id = Yii::$app->user->getId();
+
+		if(isset($_POST['Photo']))
+		{
+			$model->attributes = $_POST['Photo'];
+         $file = UploadedFile::getInstance($model, 'image');
+
+         if($file){            
+            $model->filename =  Yii::$app->utility->generateFilename("jpg");
+            $size = getimagesize($file->tempName);
+            $model->width = $size[0];
+            $model->height = $size[1];
+            $model->aspect_ratio = $size[0]/$size[1];
+            $model->content_type = $file->type;
+         }
+
+			if($this->authSaveModel($model)){
+            if($file){
+               $file->saveAs($model->getServerPath('original'));
+               $this->processUploadedImage($model->filename);
+            }
+
+            if (Yii::$app->request->isAjax){
+               return $this->renderJSON(array("success"=>1, "data"=>$model->dataForJson()));
+            }
+            else {
+               return $this->redirect(array('view','id'=>$model->id));
+            }
+         }
+         else if (Yii::$app->request->isAjax){
+            return $this->renderJSON(array("success"=>0));
+         }
+         //TODO: not authorized error
+		}
+
+      return $this->render('upload', [
+         'model' => $model,
+      ]);
+   }
 
     /**
      * Updates an existing Photo model.
@@ -98,9 +143,17 @@ class PhotoController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+		$model = $this->authLoadModel($id);
+      $model->removeAssets();
+      $model->delete();
 
-        return $this->redirect(['index']);
+      if (Yii::$app->request->isAjax){
+         $this->renderJSON(array("success"=>1));
+      }
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
     }
 
     /**

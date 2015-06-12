@@ -24,8 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
+            [
+               'content' => function ($model, $key, $index, $column) {
+                  return Html::img($model->getUrl(400), array("width"=>250));
+               },
+            ],
             'user_id',
             'album_id',
             'position',

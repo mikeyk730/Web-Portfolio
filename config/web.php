@@ -9,7 +9,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'my grandma and your grandma',
+            'cookieValidationKey' => 'er4MgvjWXyIYppEy-Ge9Tgw_tGrEZunn',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -17,10 +17,6 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
-        'urlManager' => [
-           'enablePrettyUrl' => true,
-           'showScriptName' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -41,6 +37,17 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+           'enablePrettyUrl' => true,
+           'showScriptName' => false,
+        ],
+        'utility' => [
+           'class' => 'app\components\Utility'
+        ],
+        'image' => array(
+           'class' => 'yii\image\ImageDriver',
+           'driver' => 'GD',  //GD or Imagick
+        ),
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
