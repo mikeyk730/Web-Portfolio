@@ -5,7 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'devicedetect'],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -43,6 +43,7 @@ $config = [
            'rules' => array(
                '<controller:\w+>/<id:\d+>' => '<controller>/view',
                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+               '<controller:\w+>/<action:\w+>/<url_text:\w+>' => '<controller>/<action>',
                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                '<controller:home>' => 'site/index',
                '<url_text:[\w\-]+>'=>'album/view',
@@ -57,6 +58,9 @@ $config = [
         ),
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
+        ],
+        'devicedetect' => [
+            'class' => 'alexandernst\devicedetect\DeviceDetect'
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],

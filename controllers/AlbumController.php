@@ -60,10 +60,10 @@ class AlbumController extends Controller
         }
  
         if ($model == null){
-            throw new CHttpException(400,'Bad Request.  Unknown post or action.');
+            throw new \yii\web\NotFoundHttpException('Album not found');
         }
 
-        $is_mobile = false;
+        $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 
         $this->layout = $is_mobile ? 'mobile' : 'albums';
         $view = $is_mobile ? 'mobile' : 'view';

@@ -12,20 +12,18 @@ use yii\helpers\Html;
 	<div>
 	    <a class="menu" href="#">Menu</a>
 	    <h1>
-		<a href="/m/">
-		    <span>Exposed</span>
-		</a>
+		<?= Html::a('<span>{mk} Exposed</span>', ['site/index']);?>
 	    </h1>
 	</div>
 	<nav>
 	    <ul>
-		<li><a href="/m/places">Places</a></li>
-		<li><a href="/m/people">People</a></li>
-		<li><a href="/m/wildlife">Wildlife</a></li>
+		<li><?= Html::a('Places', ['album/view', 'url_text' => 'places']);?></li>
+		<li><?= Html::a('People', ['album/view', 'url_text' => 'people']);?></li>
+		<li><?= Html::a('Wildlife', ['album/view', 'url_text' => 'wildlife']);?></li>
 		<li class="accordion">
 		    <a href="#">Galleries</a>
 		    <ul>
-			<li><a href="/m/time-travel">Time Travel</a></li>
+			<li><?= Html::a('Time Travel', ['album/view', 'url_text' => 'time-travel']);?></li>
 		    </ul>
 		</li>
 	    </ul>
@@ -33,7 +31,7 @@ use yii\helpers\Html;
     </header>
     
     <section>
-        <h2>Places</h2>
+        <h2><?= $model->title ?></h2>
         <div>
     	    <ul class="images">
                 <?php 
@@ -48,6 +46,5 @@ use yii\helpers\Html;
 
     <footer>
 	<p class="copyright">&copy; 2015</p>
-	<a id="fullsite" href="/actions/fullsite">View Full Site</a>
     </footer>
 </body>
