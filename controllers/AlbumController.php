@@ -62,8 +62,12 @@ class AlbumController extends Controller
         if ($model == null){
             throw new CHttpException(400,'Bad Request.  Unknown post or action.');
         }
-        $this->layout = 'albums';
-        return $this->render('view', [
+
+        $is_mobile = false;
+
+        $this->layout = $is_mobile ? 'mobile' : 'albums';
+        $view = $is_mobile ? 'mobile' : 'view';
+        return $this->render($view, [
             'model' => $model,
         ]);
     }

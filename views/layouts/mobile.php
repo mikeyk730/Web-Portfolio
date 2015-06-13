@@ -5,7 +5,7 @@ use app\assets\MobileAsset;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-AlbumAsset::register($this);
+MobileAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>

@@ -11,6 +11,7 @@ class MobileAsset extends AssetBundle
        'mobile/styles.css',
     ];
     public $js = [
+       '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js',
        'mobile/mobile.js',
     ];
     public $depends = [
