@@ -12,12 +12,15 @@ use Yii;
  * @property string $title
  * @property string $url_text
  * @property integer $is_published
+ * @property string $type
  *
  * @property User $user
  * @property Photo[] $photos
  */
 class Album extends \yii\db\ActiveRecord
 {
+   public $file;
+
     /**
      * @inheritdoc
      */
@@ -34,7 +37,8 @@ class Album extends \yii\db\ActiveRecord
         return [
             [['id', 'user_id'], 'required'],
             [['id', 'user_id', 'is_published'], 'integer'],
-            [['title', 'url_text'], 'string', 'max' => 45]
+            [['title', 'url_text', 'type'], 'string', 'max' => 45],
+            [['file'], 'file', 'maxFiles' => 50]
         ];
     }
 
@@ -49,6 +53,7 @@ class Album extends \yii\db\ActiveRecord
             'title' => 'Title',
             'url_text' => 'Url Text',
             'is_published' => 'Is Published',
+            'type' => 'Type',
         ];
     }
 
@@ -65,6 +70,6 @@ class Album extends \yii\db\ActiveRecord
      */
     public function getPhotos()
     {
-        return $this->hasMany(Photo::className(), ['album_id' => 'id']);
+        return $this->hasMany(Photo::className(), ['album_id' => 'id'])->orderBy('position');
     }
 }

@@ -1,51 +1,30 @@
 <?php
-/* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+
+use yii\helpers\Html;
 ?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+<body class="left bleed" id="page-index">
+    <div id="layout">
+        <header>
+	    <h1>
+                <?= Html::a('<span>{m.kaminski}</span>', ['/site/index']); ?>
+	    </h1>
+	    <nav>
+	        <ul>
+	            <li class="places"><?= Html::a('Places', ['/album/view?id=1']); ?></li>
+	            <li class="people "><?= Html::a('People', ['/album/view?id=2']); ?></li>
+	            <li class="wildlife "><?= Html::a('Wildlife', ['/album/view?id=3']); ?></li>
+	            <li class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	            <li class="time-travel "><?= Html::a('Time Travel', ['/album/view?id=4']); ?></li>
+	        </ul>
+	    </nav>
+        </header>
+	<div id="content">
+	    <div id="billboard" class="slideshow loading">
+		<img class="img" src="http://localhost/yii-basic-2.0.4/web/images/content/1600/IMG_0ihrH53KQXN9L4cAujnt.jpg" alt>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
+	</div>
+	<footer>
+	    <p class="copyright">&copy; Mike Kaminski</p>
+	</footer>
+    </div>	            
+</body>

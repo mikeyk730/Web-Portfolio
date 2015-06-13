@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Photo */
+/* @var $model app\models\Album */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Photos', 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Albums', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="photo-view">
+<div class="album-details">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -25,19 +25,20 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?php echo Html::img($model->getUrl(400), array("width"=>250)); ?> 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'user_id',
-            'album_id',
-            'position',
-            'filename',
-            'width',
-            'height',
-            'aspect_ratio',
-            'content_type',
+            'title',
+            'url_text:url',
+            'is_published',
         ],
     ]) ?>
+
+<?php foreach($model->photos as $photo) {
+echo Html::img($photo->getUrl(400), array("width"=>250));
+} ?> 
+
+
 </div>
