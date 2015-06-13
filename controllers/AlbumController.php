@@ -76,39 +76,6 @@ class AlbumController extends AuthController
         }
     }
 
-   public function getMaxPosition($album_id)
-   {
-      $max = (new \yii\db\Query())
-           ->select("MAX(position)")->from("photo")
-           ->where('album_id=:cond1', array(':cond1'=>$album_id))
-           ->andWhere('user_id=:cond2', array(':cond2'=>Yii::$app->user->getId()))
-           ->scalar();
-      return $max;
-   }
-
-   public function handleFileUpload($file, $album_id)
-   {
-      if ($file){
-         $photo = new Photo();
-         $photo->user_id = Yii::$app->user->getId();
-         $photo->album_id = $album_id;
-         $photo->position = $this->getMaxPosition($album_id) + 1;
-
-         $photo->filename = Yii::$app->utility->generateFilename("jpg");
-         $photo->content_type = $file->type;         
-
-         $size = getimagesize($file->tempName);
-         $photo->width = $size[0];
-         $photo->height = $size[1];
-         $photo->aspect_ratio = $size[0]/$size[1];
-
-         if($photo->save()){
-            $file->saveAs($photo->getServerPath('original'));
-            $this->processUploadedImage($photo->filename);
-         }
-      }
-   }
-
     /**
      * Updates an existing Album model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -166,6 +133,40 @@ class AlbumController extends AuthController
 
         return $this->redirect(['index']);
     }
+
+   protected function getMaxPosition($album_id)
+   {
+      $max = (new \yii\db\Query())
+           ->select("MAX(position)")->from("photo")
+           ->where('album_id=:cond1', array(':cond1'=>$album_id))
+           ->andWhere('user_id=:cond2', array(':cond2'=>Yii::$app->user->getId()))
+           ->scalar();
+      return $max;
+   }
+
+   protected function handleFileUpload($file, $album_id)
+   {
+      if ($file){
+         $photo = new Photo();
+         $photo->user_id = Yii::$app->user->getId();
+         $photo->album_id = $album_id;
+         $photo->position = $this->getMaxPosition($album_id) + 1;
+
+         $photo->filename = Yii::$app->utility->generateFilename("jpg");
+         $photo->content_type = $file->type;         
+
+         $size = getimagesize($file->tempName);
+         $photo->width = $size[0];
+         $photo->height = $size[1];
+         $photo->aspect_ratio = $size[0]/$size[1];
+
+         if($photo->save()){
+            $file->saveAs($photo->getServerPath('original'));
+            $this->processUploadedImage($photo->filename);
+         }
+      }
+   }
+
 
     /**
      * Finds the Album model based on its primary key value.
