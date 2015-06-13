@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Album */
 
 $display_type = (strcmp($model->type,'tile') == 0) ? 'thumbs' : 'images';
-
+$this->title = $model->title;
 ?>
 <body class="left nobleed">
     <div id="layout">
