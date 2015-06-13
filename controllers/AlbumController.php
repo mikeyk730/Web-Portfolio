@@ -27,34 +27,22 @@ class AlbumController extends AuthController
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view', 'create', 'edit', 'reorder', 'delete'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
-    }
-
-    /**
-     * Lists all Album models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new AlbumSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single Album model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDetails($id)
-    {
-        return $this->render('details', [
-            'model' => $this->findModel($id),
-        ]);
     }
 
     /**
@@ -83,25 +71,6 @@ class AlbumController extends AuthController
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Album model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
                 'model' => $model,
             ]);
         }
