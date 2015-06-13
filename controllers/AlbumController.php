@@ -82,7 +82,7 @@ class AlbumController extends Controller
            
            if ($model->file /*&& $model->validate()*/) { //TODO
               foreach ($model->file as $file) {
-                 $this->handleFileUpload($file, $id);
+                 $this->handleFileUpload($file, $model->id);
               }
            }
         }
@@ -150,7 +150,7 @@ class AlbumController extends Controller
          $photo->position = $this->getMaxPosition($album_id) + 1;
 
          $photo->filename = Yii::$app->utility->generateFilename("jpg");
-         $photo->content_type = $file->type;         
+         $photo->content_type = $file->type;
 
          $size = getimagesize($file->tempName);
          $photo->width = $size[0];

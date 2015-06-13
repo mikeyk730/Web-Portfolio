@@ -149,7 +149,8 @@ public static function var_error_log( $object=null ){
     
     public static function getPhotoPath($subdir, $filename)
     {
-       $path = Yii::$app->basePath."/web/images/content/$subdir/$filename";
+       //$path = Yii::$app->basePath."/images/content/$subdir/$filename";
+       $path = "./images/content/$subdir/$filename";
        return $path;
     }
 
