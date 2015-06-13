@@ -36,7 +36,7 @@ class AlbumController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'create', 'edit', 'reorder', 'delete'],
+                        'actions' => ['view', 'edit', 'reorder', 'delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -55,28 +55,6 @@ class AlbumController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-    }
-
-    /**
-     * Creates a new Album model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        if (!\Yii::$app->user->can('createAlbum')) {
-            throw new UnauthorizedHttpException("You don't have permission to create an album"); 
-        }
-
-        $model = new Album();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
     }
 
     /**
