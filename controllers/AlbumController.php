@@ -12,7 +12,6 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\components\AuthController;
 
-
 /**
  * AlbumController implements the CRUD actions for Album model.
  */

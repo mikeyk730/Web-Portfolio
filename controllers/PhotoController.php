@@ -8,7 +8,6 @@ use app\models\PhotoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 use app\components\AuthController;
 
 /**
@@ -82,12 +81,10 @@ class PhotoController extends AuthController
         $model->delete();
         
         if (Yii::$app->request->isAjax){
-            $this->renderJSON(array("success"=>1));
+            return \yii\helpers\Json::encode(array("success"=>1));
         }
-        
-	// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-	if(!isset($_GET['ajax']))
-	    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+       
+	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
     }
 
     /**
