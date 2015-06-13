@@ -16,11 +16,11 @@ $display_type = (strcmp($model->type,'tile') == 0) ? 'thumbs' : 'images';
 	    </h1>
 	    <nav>
 	        <ul>
-	            <li class="places"><?= Html::a('Places', ['/album/view?id=1']); ?></li>
-	            <li class="people "><?= Html::a('People', ['/album/view?id=2']); ?></li>
-	            <li class="wildlife "><?= Html::a('Wildlife', ['/album/view?id=3']); ?></li>
+		    <li><?= Html::a('Places', ['album/view', 'url_text' => 'places']);?></li>
+		    <li><?= Html::a('People', ['album/view', 'url_text' => 'people']);?></li>
+		    <li><?= Html::a('Wildlife', ['album/view', 'url_text' => 'wildlife']);?></li>
 	            <li class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</li>
-	            <li class="time-travel "><?= Html::a('Time Travel', ['/album/view?id=4']); ?></li>
+		    <li><?= Html::a('Time Travel', ['album/view', 'url_text' => 'time-travel']);?></li>
 	        </ul>
 	    </nav>
         </header>
