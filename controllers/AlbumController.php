@@ -10,12 +10,12 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\components\AuthController;
+use yii\web\UnauthorizedHttpException;
 
 /**
  * AlbumController implements the CRUD actions for Album model.
  */
-class AlbumController extends AuthController
+class AlbumController extends Controller
 {
     public function behaviors()
     {
@@ -64,6 +64,10 @@ class AlbumController extends AuthController
      */
     public function actionCreate()
     {
+        if (!\Yii::$app->user->can('createAlbum')) {
+            throw new UnauthorizedHttpException("You don't have permission to create an album"); 
+        }
+
         $model = new Album();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -83,8 +87,12 @@ class AlbumController extends AuthController
      */
     public function actionEdit($id)
     {
-        $this->layout = 'editor';
         $model = $this->findModel($id);
+        if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
+            throw new UnauthorizedHttpException("You don't have permission to modify this album"); 
+        }
+
+        $this->layout = 'editor';
 
         if (Yii::$app->request->isPost) {
            $model->file = UploadedFile::getInstances($model, 'file');
@@ -113,6 +121,9 @@ class AlbumController extends AuthController
 	    $order = $_POST['order'];
             foreach ($order as $position=>$id){
                 $model = Photo::findOne($id);
+                if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
+                    throw new UnauthorizedHttpException("You don't have permission to modify this album"); 
+                }
                 $model->position = $position;
                 $success &= $model->save();
             }
@@ -128,7 +139,11 @@ class AlbumController extends AuthController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
+            throw new UnauthorizedHttpException("You don't have permission to delete this album"); 
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }
@@ -166,6 +181,22 @@ class AlbumController extends AuthController
       }
    }
 
+   protected function saveUploadedImage($filename, $target, $q, $w=0)
+   {
+      $image = \Yii::$app->image->load(\Yii::$app->utility->getPhotoPath('original', $filename));
+      if ($w > 0){
+         $image->resize($w, 0);
+      }
+      $image->save(\Yii::$app->utility->getPhotoPath($target, $filename), $q);
+   }
+
+   protected function processUploadedImage($filename)
+   {
+      $this->saveUploadedImage($filename, 'full', 92);
+      $this->saveUploadedImage($filename, '1600', 92, 1600);
+      $this->saveUploadedImage($filename, '800', 92, 800);
+      $this->saveUploadedImage($filename, '400', 92, 400);
+   }
 
     /**
      * Finds the Album model based on its primary key value.

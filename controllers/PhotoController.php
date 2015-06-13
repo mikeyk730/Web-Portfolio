@@ -8,12 +8,12 @@ use app\models\PhotoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\components\AuthController;
+use yii\web\UnauthorizedHttpException;
 
 /**
  * PhotoController implements the CRUD actions for Photo model.
  */
-class PhotoController extends AuthController
+class PhotoController extends Controller
 {
     public function behaviors()
     {
@@ -63,8 +63,12 @@ class PhotoController extends AuthController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
+            throw new UnauthorizedHttpException("You don't have permission to view this picture"); 
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -76,7 +80,10 @@ class PhotoController extends AuthController
      */
     public function actionDelete($id)
     {
-	$model = $this->authLoadModel($id);
+        $model = $this->findModel($id);
+        if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
+            throw new UnauthorizedHttpException("You don't have permission to delete this photo"); 
+        }
         $model->removeAssets();
         $model->delete();
         

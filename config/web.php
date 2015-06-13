@@ -48,6 +48,9 @@ $config = [
            'class' => 'yii\image\ImageDriver',
            'driver' => 'GD',  //GD or Imagick
         ),
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
