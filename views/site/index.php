@@ -20,7 +20,7 @@ use yii\helpers\Html;
         </header>
 	<div id="content">
 	    <div id="billboard" class="slideshow loading">
-		<img class="img" src="http://localhost/yii-basic-2.0.4/web/images/content/1600/IMG_0ihrH53KQXN9L4cAujnt.jpg" alt>
+		<img class="img" src="/exposed/images/content/1600/IMG_0ihrH53KQXN9L4cAujnt.jpg" alt>
             </div>
 	</div>
 	<footer>
