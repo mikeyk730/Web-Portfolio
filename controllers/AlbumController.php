@@ -51,17 +51,7 @@ class AlbumController extends Controller
      */
     public function actionView($id=0, $url_text=null)
     {
-        $model = null;
-        if ($url_text != null) {
-            $model = Album::findOne(['url_text' => $url_text]);
-        }
-        else {
-            $model = $this->findModel($id);
-        }
- 
-        if ($model == null){
-            throw new \yii\web\NotFoundHttpException('Album not found');
-        }
+        $model = $this->findModel($id, $url_text);
 
         $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 
@@ -78,11 +68,11 @@ class AlbumController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionEdit($id)
+    public function actionEdit($id=0, $url_text=null)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, $url_text);
         if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
-            throw new UnauthorizedHttpException("You don't have permission to modify this album"); 
+            throw new UnauthorizedHttpException("You don't have permission to modify this album."); 
         }
 
         $this->layout = 'editor';
@@ -115,7 +105,7 @@ class AlbumController extends Controller
             foreach ($order as $position=>$id){
                 $model = Photo::findOne($id);
                 if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
-                    throw new UnauthorizedHttpException("You don't have permission to modify this album"); 
+                    throw new UnauthorizedHttpException("You don't have permission to modify this album."); 
                 }
                 $model->position = $position;
                 $success &= $model->save();
@@ -134,7 +124,7 @@ class AlbumController extends Controller
     {
         $model = $this->findModel($id);
         if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
-            throw new UnauthorizedHttpException("You don't have permission to delete this album"); 
+            throw new UnauthorizedHttpException("You don't have permission to delete this album."); 
         }
         $model->delete();
 
@@ -198,12 +188,14 @@ class AlbumController extends Controller
      * @return Album the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id, $url_text=null)
     {
-        if (($model = Album::findOne($id)) !== null) {
-            return $model;
-        } else {
+        $model = ($url_text === null) ? 
+            Album::findOne($id) : Album::findOne(['url_text' => $url_text]);
+
+        if ($model === null)
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
+
+        return $model;
     }
 }
