@@ -40,6 +40,12 @@ $config = [
         'urlManager' => [
            'enablePrettyUrl' => true,
            'showScriptName' => false,
+           'rules' => array(
+               '<controller:\w+>/<id:\d+>' => '<controller>/view',
+               '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+               '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+               '<url_text:[\w\-]+>'=>'album/view',
+           ),
         ],
         'utility' => [
            'class' => 'app\components\Utility'

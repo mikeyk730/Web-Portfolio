@@ -49,11 +49,22 @@ class AlbumController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id=0, $url_text=null)
     {
-       $this->layout = 'albums';
+        $model = null;
+        if ($url_text != null) {
+            $model = Album::findOne(['url_text' => $url_text]);
+        }
+        else {
+            $model = $this->findModel($id);
+        }
+ 
+        if ($model == null){
+            throw new CHttpException(400,'Bad Request.  Unknown post or action.');
+        }
+        $this->layout = 'albums';
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
