@@ -22,7 +22,7 @@ $this->title = $model->title;
             <?= $this->render($model->type, ['model' => $model]); ?> 
         </div>
         <footer>
-            <p class="copyright">&copy; Mike Kaminski</p>
+            <p class="copyright">&copy; 2015 Mike Kaminski</p>
         </footer>
     </div>
 </div>

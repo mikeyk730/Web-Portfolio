@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Album */
 
+$this->title = $model->title;
 ?>
 
 <div class="page-<?=$model->type?>"">
