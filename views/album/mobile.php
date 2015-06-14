@@ -28,7 +28,7 @@ $this->title = $model->title;
                 <?php 
                 foreach($model->photos as $photo) {
                     if (!$photo->hide_on_mobile) {
-                        $img = Html::img($photo->getUrl(400), ['data-src' => $photo->getUrl(1600)]);
+                        $img = Html::img($photo->getUrl(400), ['data-src' => $photo->getUrl(800)]);
                         echo '<li>'.$img.'</li>';
                     }
                 }
