@@ -18,11 +18,11 @@ MobileAsset::register($this);
     <title><?= $this->title ? Html::encode($this->title)." - " : "" ?><?= Yii::$app->name; ?></title>
     <?php $this->head() ?>
 </head>
-
+<body>
 <?php $this->beginBody() ?>
             <?= $content ?>
-
 <?php $this->endBody() ?>
+</body>
 
 </html>
 <?php $this->endPage() ?>

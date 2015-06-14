@@ -7,12 +7,12 @@ use yii\helpers\Html;
 
 ?>
 
-<body>
+<div class="page-<?=$model->type?>"">
     <header>
 	<div>
 	    <a class="menu" href="#">Menu</a>
 	    <h1>
-		<?= Html::a('<span>{mk} Exposed</span>', ['album/home']);?>
+		<?= Html::a('<span>{m.kaminski}</span>', ['album/home']);?>
 	    </h1>
 	</div>
             <?= $this->render('nav', 
@@ -26,7 +26,7 @@ use yii\helpers\Html;
     	    <ul class="images">
                 <?php 
                 foreach($model->photos as $photo) {
-                    $img = Html::img($photo->getUrl(400));
+                    $img = Html::img($photo->getUrl(400), ['data-src' => $photo->getUrl(1600)]);
                     echo '<li>'.$img.'</li>';
                 }
                 ?>
@@ -37,4 +37,4 @@ use yii\helpers\Html;
     <footer>
 	<p class="copyright">&copy; 2015 Mike Kaminski</p>
     </footer>
-</body>
+</div>

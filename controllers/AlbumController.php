@@ -64,7 +64,7 @@ class AlbumController extends Controller
 
     public function actionHome()
     {
-        return $this->actionView(5, null, false);
+        return $this->actionView(5);
     }
 
     /**
