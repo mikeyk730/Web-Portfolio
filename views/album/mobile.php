@@ -12,7 +12,7 @@ use yii\helpers\Html;
 	<div>
 	    <a class="menu" href="#">Menu</a>
 	    <h1>
-		<?= Html::a('<span>{mk} Exposed</span>', ['site/index']);?>
+		<?= Html::a('<span>{mk} Exposed</span>', ['album/home']);?>
 	    </h1>
 	</div>
             <?= $this->render('nav', 
