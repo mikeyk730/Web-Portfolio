@@ -5,6 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'mkaminski_exposed',
     'name' => '{mk} Exposed',
+    'defaultRoute' => 'album/home',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'devicedetect'],
     'components' => [
@@ -46,7 +47,6 @@ $config = [
                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                '<controller:\w+>/<action:\w+>/<url_text:[\w\-]+>' => '<controller>/<action>',
                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-               '<controller:home>' => 'site/index',
                '<url_text:[\w\-]+>'=>'album/view',
            ),
         ],

@@ -47,12 +47,6 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
-        $this->layout = 'albums';
-        return $this->render('index');
-    }
-
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {

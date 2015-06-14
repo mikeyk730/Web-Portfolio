@@ -18,7 +18,7 @@ AlbumAsset::register($this);
     <title><?= $this->title ? Html::encode($this->title)." - " : "" ?><?= Yii::$app->name; ?></title>
     <?php $this->head() ?>
 </head>
-<body 
+<body>
 <?php $this->beginBody() ?>
             <?= $content ?>
 

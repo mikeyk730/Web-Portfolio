@@ -31,12 +31,12 @@ class AlbumController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['view'],
+                        'actions' => ['view', 'home'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'edit', 'reorder', 'delete'],
+                        'actions' => ['view', 'home', 'edit', 'reorder', 'delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -49,17 +49,22 @@ class AlbumController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id=0, $url_text=null)
+    public function actionView($id=0, $url_text=null, $consider_mobile=true)
     {
         $model = $this->findModel($id, $url_text);
 
-        $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+        $is_mobile = $consider_mobile && \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 
         $this->layout = $is_mobile ? 'mobile' : 'albums';
         $view = $is_mobile ? 'mobile' : 'view';
         return $this->render($view, [
             'model' => $model,
         ]);
+    }
+
+    public function actionHome()
+    {
+        return $this->actionView(5, null, false);
     }
 
     /**
