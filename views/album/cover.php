@@ -8,8 +8,10 @@ use yii\helpers\Html;
 
 <div id="billboard" class="slideshow">
     <?php 
-    $i = array_rand($model->photos);
-    $photo = $model->photos[$i];
-    echo Html::img($photo->getUrl('1600'), ['class' => 'img']);
+    foreach($model->photos as $photo) {
+        if (!$photo->hide_on_pc) {
+            echo Html::img($photo->getUrl('1600'), ['class' => 'img']);
+        }
+    }
     ?>
 </div>

@@ -49,11 +49,11 @@ class AlbumController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id=0, $url_text=null, $consider_mobile=true)
+    public function actionView($id=0, $url_text=null)
     {
         $model = $this->findModel($id, $url_text);
 
-        $is_mobile = $consider_mobile && \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+        $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 
         $this->layout = $is_mobile ? 'mobile' : 'albums';
         $view = $is_mobile ? 'mobile' : 'view';

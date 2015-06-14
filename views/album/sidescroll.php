@@ -11,12 +11,14 @@ use yii\helpers\Html;
     <ul class="images">
         <?php
         foreach($model->photos as $photo) {
-            $img = Html::img($photo->getUrl('1600'), array(
-                "data-dimensions" => $photo->width."x".$photo->height,
-                "id" => $photo->filename,
-            ));
-            echo '<li>'.$img.'</li>';
-        } 
+            if (!$photo->hide_on_pc) {
+                $img = Html::img($photo->getUrl('1600'), array(
+                    "data-dimensions" => $photo->width."x".$photo->height,
+                    "id" => $photo->filename,
+                ));
+                echo '<li>'.$img.'</li>';
+            } 
+        }
         ?>
     </ul>
 </div>
