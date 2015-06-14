@@ -14,7 +14,7 @@ $this->title = $model->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <?= $form->field($model, 'file[]')->fileInput(['multiple' => true]) ?>
+    <?= $form->field($model, 'file[]')->label('Add photos')->fileInput(['multiple' => true]) ?>
     <?php ActiveForm::end(); ?>
     
     <?php
