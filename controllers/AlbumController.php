@@ -81,9 +81,7 @@ class AlbumController extends Controller
            $model->file = UploadedFile::getInstances($model, 'file');
            
            if ($model->file /*&& $model->validate()*/) { //TODO
-              foreach ($model->file as $file) {
-                 $this->handleFileUpload($file, $model->id);
-              }
+               $this->handleFileUploads($model->file, $model->id);
            }
         }
 
@@ -140,14 +138,23 @@ class AlbumController extends Controller
            ->scalar();
       return $max;
    }
-
-   protected function handleFileUpload($file, $album_id)
+    
+    protected function handleFileUploads($files, $album_id)
+    {
+        $position = $this->getMaxPosition($album_id);
+        foreach ($files as $file) {
+            $position++;
+            $this->handleFileUpload($file, $album_id, $position);
+        }
+    }
+    
+   protected function handleFileUpload($file, $album_id, $position)
    {
       if ($file){
          $photo = new Photo();
          $photo->user_id = Yii::$app->user->getId();
          $photo->album_id = $album_id;
-         $photo->position = $this->getMaxPosition($album_id) + 1;
+         $photo->position = $position;
 
          $photo->filename = Yii::$app->utility->generateFilename("jpg");
          $photo->content_type = $file->type;

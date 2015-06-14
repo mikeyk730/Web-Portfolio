@@ -15,19 +15,9 @@ use yii\helpers\Html;
 		<?= Html::a('<span>{mk} Exposed</span>', ['site/index']);?>
 	    </h1>
 	</div>
-	<nav>
-	    <ul>
-		<li><?= Html::a('Places', ['album/view', 'url_text' => 'places']);?></li>
-		<li><?= Html::a('People', ['album/view', 'url_text' => 'people']);?></li>
-		<li><?= Html::a('Wildlife', ['album/view', 'url_text' => 'wildlife']);?></li>
-		<li class="accordion">
-		    <a href="#">Galleries</a>
-		    <ul>
-			<li><?= Html::a('Time Travel', ['album/view', 'url_text' => 'time-travel']);?></li>
-		    </ul>
-		</li>
-	    </ul>
-	</nav>
+            <?= $this->render('nav', 
+                   ['user_id' => $model->user_id, 'album_id' => $model->id]); ?>
+
     </header>
     
     <section>
@@ -37,7 +27,7 @@ use yii\helpers\Html;
                 <?php 
                 foreach($model->photos as $photo) {
                     $img = Html::img($photo->getUrl(400));
-                    echo '<li>'.$img.'<div><h4></h4><p class="description"></p></div></li>';
+                    echo '<li>'.$img.'</li>';
                 }
                 ?>
 	    </ul>
@@ -45,6 +35,6 @@ use yii\helpers\Html;
     </section>
 
     <footer>
-	<p class="copyright">&copy; 2015</p>
+	<p class="copyright">&copy; 2015 Mike Kaminski</p>
     </footer>
 </body>

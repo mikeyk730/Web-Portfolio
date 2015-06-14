@@ -8,21 +8,14 @@ use yii\helpers\Html;
 $display_type = (strcmp($model->type,'tile') == 0) ? 'thumbs' : 'images';
 $this->title = $model->title;
 ?>
-<body class="left nobleed">
+<div class="left nobleed">
     <div id="layout">
         <header>
 	    <h1>
                 <?= Html::a('<span>{mk}</span>', ['/site/index']); ?>
 	    </h1>
-	    <nav>
-	        <ul>
-		    <li><?= Html::a('Places', ['album/view', 'url_text' => 'places']);?></li>
-		    <li><?= Html::a('People', ['album/view', 'url_text' => 'people']);?></li>
-		    <li><?= Html::a('Wildlife', ['album/view', 'url_text' => 'wildlife']);?></li>
-	            <li class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</li>
-		    <li><?= Html::a('Time Travel', ['album/view', 'url_text' => 'time-travel']);?></li>
-	        </ul>
-	    </nav>
+            <?= $this->render('nav', 
+                   ['user_id' => $model->user_id, 'album_id' => $model->id]); ?>
         </header>
         <div id="content">
 	    <div class="<?= $model->type ?> native">
@@ -51,4 +44,4 @@ $this->title = $model->title;
             <p class="copyright">&copy; Mike Kaminski</p>
         </footer>
     </div>
-</body>
+</div>

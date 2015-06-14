@@ -70,6 +70,7 @@ class Album extends \yii\db\ActiveRecord
      */
     public function getPhotos()
     {
-        return $this->hasMany(Photo::className(), ['album_id' => 'id'])->orderBy('position');
+        return $this->hasMany(Photo::className(), ['album_id' => 'id'])
+                    ->orderBy('position');
     }
 }
