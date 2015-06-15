@@ -22,6 +22,7 @@ class PhotoController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'update' => ['post'],
                 ],
             ],
             'access' => [
@@ -63,12 +64,7 @@ class PhotoController extends Controller
             throw new UnauthorizedHttpException("You don't have permission to modify this photo"); 
         }
         $success = $model->load(Yii::$app->request->post()) && $model->save();
-        if (Yii::$app->request->isAjax){
-            return \yii\helpers\Json::encode(array("success"=>$success));
-        }
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return \yii\helpers\Json::encode(array("success"=>$success));
     }
 
     /**
