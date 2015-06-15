@@ -1,7 +1,5 @@
-/* 22Slides Mobile Skin Stylesheet
------------------------------------------------ */
-
 @import url('http://fonts.googleapis.com/css?family=Wire+One');
+@import url('assets/wire_one.css');
 
 body {
     background-color: #ffffff;
