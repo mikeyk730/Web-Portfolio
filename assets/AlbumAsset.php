@@ -12,7 +12,7 @@ class AlbumAsset extends AssetBundle
        'main/skin-styles.css',
     ];
     public $js = [
-       '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js',
+       'main/jquery.1.10.1.min.js',
        'main/scripts.js',
     ];
     public $depends = [

@@ -33,7 +33,7 @@ class PhotoController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'delete'],
+                        'actions' => ['index', 'update', 'delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -56,18 +56,17 @@ class PhotoController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Photo model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
+    public function actionUpdate($id)
     {
         $model = $this->findModel($id);
         if (!\Yii::$app->user->can('modifyAlbum', ['content' => $model])) {
-            throw new UnauthorizedHttpException("You don't have permission to view this picture"); 
+            throw new UnauthorizedHttpException("You don't have permission to modify this photo"); 
         }
-        return $this->render('view', [
+        $success = $model->load(Yii::$app->request->post()) && $model->save();
+        if (Yii::$app->request->isAjax){
+            return \yii\helpers\Json::encode(array("success"=>$success));
+        }
+        return $this->render('update', [
             'model' => $model,
         ]);
     }

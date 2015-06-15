@@ -18,11 +18,16 @@ $this->title = $model->title;
     <?php ActiveForm::end(); ?>
     
     <?php
-    echo '<ul class="grid" id="sortable" data-reorder-url="'.Yii::$app->urlManager->createUrl(['album/reorder', 'id'=>$model->id]).'" data-delete-url="'.Yii::$app->urlManager->createUrl('photo/delete').'">';
+    echo '<ul class="grid" id="sortable" data-reorder-url="'.Yii::$app->urlManager->createUrl(['album/reorder', 'id'=>$model->id]).'" data-edit-url="'.Yii::$app->urlManager->createUrl(['photo/update']).'" data-delete-url="'.Yii::$app->urlManager->createUrl('photo/delete').'">';
     foreach($model->photos as $photo) {
+        $options = array("id" => $photo->id);
+        $hidden = $photo->hide_on_pc || $photo->hide_on_mobile;
+        if ($hidden) {
+            $options['class'] = "hidden";
+        }
         $img = Html::img($photo->getUrl(400));
         $content = '<div class="thumb-container image"><div class="thumb">'.$img.'<a href="#" class="action remove"></a><a href="#" class="action hide"></a><a href="#" class="action details"></a><a href="#" class="action sort"></a></div>';
-        echo Html::tag('li', $content, array("id"=>$photo->id));
+        echo Html::tag('li', $content, $options);
     } 
     echo '</ul>';
     ?> 

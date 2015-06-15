@@ -10,7 +10,6 @@ class EditorAsset extends AssetBundle
        'main/editor.css'
     ];
     public $js = [
-      
        'main/jquery-ui.js',
        'main/editor.js'
     ];

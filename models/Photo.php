@@ -16,14 +16,14 @@ use Yii;
  * @property integer $height
  * @property double $aspect_ratio
  * @property string $content_type
+ * @property integer $hide_on_mobile
+ * @property integer $hide_on_pc
  *
- * @property User $user
  * @property Album $album
+ * @property User $user
  */
 class Photo extends \yii\db\ActiveRecord
 {
-   public $image;
-
     /**
      * @inheritdoc
      */
@@ -39,7 +39,7 @@ class Photo extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'album_id'], 'required'],
-            [['user_id', 'album_id', 'position', 'width', 'height'], 'integer'],
+            [['user_id', 'album_id', 'position', 'width', 'height', 'hide_on_mobile', 'hide_on_pc'], 'integer'],
             [['aspect_ratio'], 'number'],
             [['filename'], 'string', 'max' => 200],
             [['content_type'], 'string', 'max' => 45]
@@ -61,15 +61,9 @@ class Photo extends \yii\db\ActiveRecord
             'height' => 'Height',
             'aspect_ratio' => 'Aspect Ratio',
             'content_type' => 'Content Type',
+            'hide_on_mobile' => 'Hide On Mobile',
+            'hide_on_pc' => 'Hide On Pc',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
@@ -78,6 +72,14 @@ class Photo extends \yii\db\ActiveRecord
     public function getAlbum()
     {
         return $this->hasOne(Album::className(), ['id' => 'album_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
    public function getUrl($subdir)
