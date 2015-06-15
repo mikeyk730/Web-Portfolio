@@ -11,7 +11,7 @@ $this->title = $model->title;
 ?>
 <div class="album-edit">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::a($this->title, ['album/view', 'id'=>$model->id]) ?></h1>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'file[]')->label('Add photos')->fileInput(['multiple' => true]) ?>
