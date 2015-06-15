@@ -1,0 +1,33 @@
+.sidescroll .images li { margin-top: 46px; vertical-align: top; }
+header h1{
+    white-space:nowrap;
+}
+.page-cover header, .page-cover header h1 a{
+    width: 250px !important;
+}
+
+.page-cover header a{
+    color: #aaaaaa; !important;
+}
+.accordion li a {
+    color: #888888 !important;
+}
+.page-cover header a:hover{
+    color: white !important;
+}
+
+header a:hover{
+    font-weight:bold;
+}
+
+li.selected a{
+    font-weight:bold !important;
+}
+
+.my-text-page{
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body{
+    height:100%
+}
