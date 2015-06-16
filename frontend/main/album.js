@@ -3863,9 +3863,9 @@ lightbox.next = function(direction) {
         if ($new.length === 0) {
             return false;
         }
-        var image = $new.children('a').attr('href');
+        var image = $new.find('a').attr('href');
         var title = $new.find('h4').html();
-        var description = $new.find('div').html();
+        var description = null;//$new.find('div').html();
         var alt = $new.find('img').attr('alt');
         var dimensions = $new.find('img').data('dimensions');
         lightbox.show(image, title, description, alt, dimensions);
@@ -4991,7 +4991,8 @@ $(document).ready(function() {
         if ($('nav ul ul').length > 0) rsn.dropdown2();
         rsn.ios();
         if ($('#billboard').length > 0) rsn.home.setup();
-        if ($('#content .grid').not('.collage').length > 0) lightbox.start();
+        if ($('#content .grid').not('.collage').length > 0) 
+            lightbox.start();
         rsn.email();
         rsn.links();
         if ($('#container.left div.sidescroll').length > 0) rsn.sideScroll.sidebar();

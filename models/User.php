@@ -1,6 +1,7 @@
 <?php
-
 namespace app\models;
+
+use yii\helpers\Url;
 
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -87,5 +88,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === crypt($password, $this->salt);
+    }
+
+    public function getAvatarUrl()
+    {
+        return Url::home(true).'images/avatars/'.$this->id.'.jpg';   
     }
 }

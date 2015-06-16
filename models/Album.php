@@ -73,4 +73,13 @@ class Album extends \yii\db\ActiveRecord
         return $this->hasMany(Photo::className(), ['album_id' => 'id'])
                     ->orderBy('position');
     }
+
+    public function getRandomPhoto($mobile=false)
+    {
+        $where = $mobile ? 'hide_on_mobile = 0' : 'hide_on_pc = 0';
+        $p = $this->hasMany(Photo::className(), ['album_id' => 'id'])
+                  ->where($where);
+        //TODO : random
+        return $p->one();
+    }
 }
