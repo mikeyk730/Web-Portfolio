@@ -78,8 +78,8 @@ class Album extends \yii\db\ActiveRecord
     {
         $where = $mobile ? 'hide_on_mobile = 0' : 'hide_on_pc = 0';
         $p = $this->hasMany(Photo::className(), ['album_id' => 'id'])
-                  ->where($where);
-        //TODO : random
-        return $p->one();
+                  ->where($where)->all(); 
+        $i = array_rand($p);
+        return $p[$i];
     }
 }
