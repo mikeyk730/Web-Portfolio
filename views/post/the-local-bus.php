@@ -29,3 +29,6 @@ Is it true?  Maybe.  What could go wrong?  I'm on a short timeline.  It looks li
     <p>I carried on cautiously, knowing that what he warned against was a very real possibility.  Minutes after setting off, I had to decide: right or left?  I picked left.  Encountering a security guard, I picked wrong.  Next junction, left turn or straight?  I picked left.  What I wouldn't give to see a foreigner.</p>
     <p>Why didn't I wait for the people from my bus.  Not a soul to be seen, asking for cash, candy, or my water.  On my own.  I continued on, hearing running water.  A boost.  "Hey! Hey!"  I turn to see a boy with a donkey, pointing off the road.  "This way."</p>
 </div>
+<div class="album-section">
+    <?= $this->render('//album/full_width', ['model' => $model->getAlbum(9)]); ?>
+</div>

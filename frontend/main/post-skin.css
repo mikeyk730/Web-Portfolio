@@ -1,5 +1,6 @@
 body {
     font-family: "europa", sans-serif;
+    line-height: 1.8em;
 }
 
 header {
@@ -174,8 +175,12 @@ header {
 .inline-album, .text-section
 {
     width: 80%;
-    max-width: 1800px;
+    max-width: 900px;
     margin: 0px auto;
+}
+
+.text-section{
+    margin-bottom: 25px;
 }
 
 .inline-album img 
@@ -197,4 +202,5 @@ header {
     content: ' ';
     display: block;
     visibility: hidden;
+    margin-bottom: 25px;
 }
