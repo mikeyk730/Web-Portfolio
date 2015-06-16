@@ -48,7 +48,9 @@ class PostController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'posts';
+        $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+
+        $this->layout = $is_mobile ? 'mobile' : 'posts';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

@@ -1,5 +1,14 @@
 <?php
 use yii\helpers\Html;
+function addAlbum($thiss, $model, $type, $id)
+{
+    $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+    if ($is_mobile){
+        $type = "mobile_".$type;
+    }
+    $view = "//album/".$type;
+    return $thiss->render($view, ['model' => $model->getAlbum($id)]);
+}
 ?>
 <div class="text-section">
     <h1><?=$model->title?></h1>
@@ -12,7 +21,7 @@ use yii\helpers\Html;
     <p>The bus rumbles to a start, the door slams, and the stress fades away.  I feel smart and fulfilled.  Those stupid people that paid so much for a tour, why didn't they just take the bus?</p>
 </div>
 <div class="album-section">
-    <?= $this->render('//album/inline', ['model' => $model->getAlbum(8)]); ?>
+    <?= addAlbum($this, $model, 'inline', 8); ?>
 </div>
 <div class="text-section">
     <p>
@@ -30,7 +39,7 @@ Is it true?  Maybe.  What could go wrong?  I'm on a short timeline.  It looks li
     <p>Why didn't I wait for the people from my bus.  Not a soul to be seen, asking for cash, candy, or my water.  On my own.  I continued on, hearing running water.  A boost.  "Hey! Hey!"  I turn to see a boy with a donkey, pointing off the road.  "This way."</p>
 </div>
 <div class="album-section">
-    <?= $this->render('//album/full_width', ['model' => $model->getAlbum(9)]); ?>
+    <?= addAlbum($this, $model, 'full_width', 9); ?>
 </div>
 <div class="text-section">
     <p>I walk into the bus station, bags in tow.  The scene is overwhelming.  Dozens of unlabeled buses, hundreds of people.  I don't know how to pronounce the place I'm going.  I've only looked up the local name half an hour ago.  Fortunately this one is easy, Tis Isat.  As I walk, I'm shouted at.  "Gondar?  Gondar?"  No, I shake my head, "Tis Isat."  He points to the corner and I follow.  When I'm closer I call out again, "Tis Isat!  Tis Isat?"  A huge smile grows on a man's face, and a heavily accented, "Ahh, Blue Nile Waterfall!" escapes his lips.  He gestures to a bus and I get on.  The stress begins.</p>

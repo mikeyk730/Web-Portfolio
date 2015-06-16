@@ -150,6 +150,11 @@ rsn.forms = function() {
     var action = "/actions" + $(this).attr('action');
     $(this).attr('action', action);
 };
+function handleResize() {
+    $("#post-container header").css({
+	height: $(window).height() + "px"
+    });
+}
 $(document).ready(function() {
     $('body').removeClass('loading');
     rsn.markup();
@@ -169,6 +174,15 @@ $(document).ready(function() {
         e.fullBleed({'className': 'to-move'});
         $('.to-move').appendTo('body');
     }
+    $(window).resize(function () {
+        handleResize();
+    });
+    handleResize();
+    $('#post-cover').click(function(){
+        var pos = $('#content').position();
+        var top = pos ? pos.top : 300;
+        scrollTo(0, top-100);
+    });
 });
 $(window).load(function() {
     $('body').removeClass('loading');
