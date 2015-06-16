@@ -169,6 +169,7 @@ header {
     height: auto;
     background: #efefef;
     border: none;
+    margin-bottom: 25px;
 }
 
 .inline-album *
@@ -218,11 +219,13 @@ header {
 }
 
 #content h1{
+    text-align: center;
     margin: 0.5em 0;
     font-size: 2.3em;
 }
 
 #content h2{
+    text-align: center;
     font-size: 1.3em;
     font-style: italic;
     color: #666
