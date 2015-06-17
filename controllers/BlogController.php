@@ -58,7 +58,7 @@ class BlogController extends Controller
 
     public function actionIndex($user_id=100)
     {
-        $this->layout = 'posts';
+        $this->layout = 'albums';
         return $this->render('list', array('user_id' => $user_id));
     }
 
