@@ -89,6 +89,12 @@ $(function() {
     });
     handleResize();
 
+    $('#post-cover').click(function(){
+        var pos = $('#content').position();
+        var top = pos ? pos.top : 300;
+        scrollTo(0, top-100);
+    });
+
     $(window).scroll(function () {
 	var t = $(this).scrollTop();
 	$(".author-meta").css("opacity", +(9 >= t));

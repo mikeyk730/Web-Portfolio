@@ -80,8 +80,15 @@ class Post extends \yii\db\ActiveRecord
         return Album::findOne($id);
     }
 
-    public function getCoverUrl($mobile=false)
+    public function getCoverUrl($mobile=false, $size=1600)
     {
-        return $this->cover->getRandomPhoto($mobile)->getUrl(1600);
+        return $this->cover->getRandomPhoto($mobile)->getUrl($size);
+    }
+
+    public static function getPosts($user_id)
+    {
+        return self::find()->where('user_id = :user_id', [':user_id' => $user_id])
+                           ->orderBy('date DESC')
+                           ->all();
     }
 }

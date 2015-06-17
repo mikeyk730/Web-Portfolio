@@ -30,7 +30,7 @@ class BlogController extends Controller
      * Lists all Post models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionList()
     {
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -54,6 +54,12 @@ class BlogController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionIndex($user_id=100)
+    {
+        $this->layout = 'posts';
+        return $this->render('list', array('user_id' => $user_id));
     }
 
     /**
