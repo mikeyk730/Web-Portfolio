@@ -47,7 +47,7 @@ $config = [
                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                '<controller:\w+>/<action:\w+>/<url_text:[\w\-]+>' => '<controller>/<action>',
                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-               '<url_text:[\w\-]+>'=>'album/view',
+               '<controller:\w+>' => '<controller>/index',
            ),
         ],
         'utility' => [

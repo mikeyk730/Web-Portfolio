@@ -25,6 +25,8 @@ $groups = app\models\Group::getGroups($user_id);
                 echo Html::tag('li', $a, $options);
             }
         }
+        $a = Html::a('Blog', ['blog/index']);
+        echo Html::tag('li', $a);
         ?>
     </ul>
 </nav>

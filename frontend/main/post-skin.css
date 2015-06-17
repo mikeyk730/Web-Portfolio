@@ -1,4 +1,4 @@
-body {
+#post-container {
     font: 15px/24px 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     background: #efefef; 
     color: #555;
@@ -12,7 +12,7 @@ p:last-child {
     margin: 0;
 }
 
-header {
+#post-container header {
     height: 960px;
     background: #1a1a1a;
     position: relative;
@@ -271,6 +271,9 @@ header {
     transition: opacity 340ms cubic-bezier(0.42, 0, 0.585, 1.23);
 }
 
+#posts-grid {
+    padding: 30px 10px;
+}
 #posts-grid .squares {
     padding: 5px;
 }
@@ -368,4 +371,26 @@ header {
     color: #fff;
     text-decoration: none;
     border-bottom: none;
+}
+
+#posts-grid .post-square:hover .post-meta, 
+#posts-grid .post-square:active .post-meta
+{
+    opacity:1;
+}
+
+#post-container header a,#post-container header a:link,#post-container header a:hover
+{
+    color:#fff;
+    text-decoration:none;
+}
+
+#post-container header .author-meta a
+{
+    /*mdk*/border-bottom:solid 1px transparent;
+}
+
+#post-container header .author-meta a:hover
+{
+    border-bottom:solid 1px #fff;
 }

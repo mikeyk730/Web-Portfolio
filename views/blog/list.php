@@ -1,9 +1,17 @@
 <?php
 use yii\helpers\Html;
 $posts = app\models\Post::getPosts($user_id);
+$branding = '{mk}';
 ?>
-<div id="main-wrapper">   
-    <div id="profile">
+<div class="left">  
+    <header>
+	    <h1>
+                <?= Html::a('<span>'.$branding.'</span>', ['/album/home']); ?>
+	    </h1>
+            <?= $this->render('//album/nav', 
+                   ['user_id' => $user_id, 'album_id' => 0]); ?>
+        </header> 
+    <div id="content">
         <div id="posts-grid">
             <div class="squares">
                 <?php  
