@@ -272,10 +272,7 @@ p:last-child {
 }
 
 #posts-grid {
-    padding: 30px 10px;
-}
-#posts-grid .squares {
-    padding: 5px;
+    padding: 35px 0px;
 }
 
 #posts-grid .squares:after {
