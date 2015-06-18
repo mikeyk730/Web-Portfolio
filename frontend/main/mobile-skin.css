@@ -111,7 +111,7 @@ header h1 span {
 
 #posts-grid .post-square .post-meta .post-titles h1 
 {
-    margin: 70px 0 0;
+    margin: 35px 0 0;
     font-size: 33px;
     text-transform: uppercase;
 }
@@ -129,7 +129,7 @@ header h1 span {
 {
     position: absolute;
     width: 100%;
-    bottom: 15px;
+    bottom: 35px;
 
     font-family: "adobe-garamond-pro", serif;
     font-size: 20px;

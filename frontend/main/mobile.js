@@ -178,7 +178,7 @@ $(document).ready(function() {
         handleResize();
     });
     handleResize();
-    $('#post-cover').click(function(){
+    $('.post-titles').click(function(){
         var pos = $('#content').position();
         var top = pos ? pos.top : 300;
         scrollTo(0, top-100);
