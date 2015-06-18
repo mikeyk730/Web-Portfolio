@@ -1,13 +1,17 @@
 <?php
 use yii\helpers\Html;
 $posts = app\models\Post::getPosts($user_id);
-$branding = '{mk}';
+$is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+$branding = $is_mobile ? '{m.kaminski}' : '{mk}';
 ?>
 <div class="left">  
     <header>
+	<div>
+	    <a class="menu" href="#">Menu</a>
 	    <h1>
                 <?= Html::a('<span>'.$branding.'</span>', ['/album/home']); ?>
 	    </h1>
+        </div>
             <?= $this->render('//album/nav', 
                    ['user_id' => $user_id, 'album_id' => 0]); ?>
         </header> 

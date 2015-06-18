@@ -382,7 +382,7 @@ footer .copyright {
     background: rgba(0,0,0,0.5);
 }
 
-.post-titles {
+#post-container .post-titles {
     position: absolute;
     z-index: 6;
     text-align: center;
@@ -392,14 +392,14 @@ footer .copyright {
     margin-top: -157px;
 }
 
-.post-titles h1, .post-titles h2 {
+#post-container .post-titles h1, #post-container .post-titles h2 {
     margin: 0;
     width: 90%;
     display: inline-block;
     word-wrap: break-word;
 }
 
-.post-titles h1 {
+#post-container .post-titles h1 {
     text-transform: uppercase;
     letter-spacing: 4px;
     font-size: 35px;
@@ -409,7 +409,7 @@ footer .copyright {
     text-align: center;
 }
 
-.post-titles h2 {
+#post-container .post-titles h2 {
     font-family: "adobe-garamond-pro", serif;
     line-height: normal;
     font-size: 20px;

@@ -9,6 +9,10 @@ body {
     background-color: #ffffff;
 }
 
+.menu {
+    display:none;
+}
+
 .centered #layout {
     width: 900px;
 }

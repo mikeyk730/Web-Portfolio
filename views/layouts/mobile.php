@@ -23,6 +23,5 @@ MobileAsset::register($this);
             <?= $content ?>
 <?php $this->endBody() ?>
 </body>
-
 </html>
 <?php $this->endPage() ?>
