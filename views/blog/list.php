@@ -29,8 +29,8 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
                 <div class="<?=$class?>" style="background-image:url(<?= $post->getCoverUrl(false, $first ? 800 : 400) ?>)"">
 	            <div class="post-meta">
 	    	        <div class="post-titles">
-                            <h1><?= Html::a($post->title, array('blog/view', 'id'=>$post->id)); ?></h1>
-                            <h2><?= Html::a($post->subtitle, array('blog/view', 'id'=>$post->id)); ?></h2>
+                            <h1><?= Html::a($post->title, array('blog/view', 'url_text'=>$post->url_text)); ?></h1>
+                            <h2><?= Html::a($post->subtitle, array('blog/view', 'url_text'=>$post->url_text)); ?></h2>
                         </div>
                         <div class="post-date posted-by">
                             <?php $datetime = new DateTime($post->date);

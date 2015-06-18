@@ -46,13 +46,13 @@ class BlogController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id=null, $url_text=null)
     {
         $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 
         $this->layout = $is_mobile ? 'mobile' : 'posts';
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id, $url_text),
         ]);
     }
 
@@ -120,12 +120,14 @@ class BlogController extends Controller
      * @return Post the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id, $url_text=null)
     {
-        if (($model = Post::findOne($id)) !== null) {
-            return $model;
-        } else {
+        $model = ($url_text === null) ? 
+                 Post::findOne($id) : Post::findOne(['url_text' => $url_text]);
+        
+        if ($model === null)
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        
+        return $model;
     }
 }
