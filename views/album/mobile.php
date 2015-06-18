@@ -22,7 +22,7 @@ $this->title = $model->title;
     </header>
     
     <section>
-        <h2><?= $model->title ?></h2>
+        <h2 class="page-title"><?= $model->title ?></h2>
         <div>
     	    <ul class="images">
                 <?php 

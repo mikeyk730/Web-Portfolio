@@ -16,6 +16,7 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
                    ['user_id' => $user_id, 'album_id' => 0]); ?>
         </header> 
     <div id="content">
+        <h2 class="page-title">Blog</h2>
         <div id="posts-grid">
             <div class="squares">
                 <?php  
@@ -25,7 +26,7 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
                     if ($first){
                         $class = $class." featured-post";
                     }?>
-                <div class="<?=$class?>">
+                <div class="<?=$class?>" style="background-image:url(<?= $post->getCoverUrl(false, $first ? 800 : 400) ?>)"">
 	            <div class="post-meta">
 	    	        <div class="post-titles">
                             <h1><?= Html::a($post->title, array('blog/view', 'id'=>$post->id)); ?></h1>
@@ -36,7 +37,6 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
                             echo $datetime->format('F j<\s\up>S</\s\up>, Y'); ?>
                         </div>
                     </div>
-                    <div class="post-image" style="background-image:url(<?= $post->getCoverUrl(false, $first ? 800 : 400) ?>)"></div>
                 </div>
                 <?php
                 $first = false;

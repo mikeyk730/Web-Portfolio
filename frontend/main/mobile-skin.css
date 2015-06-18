@@ -28,13 +28,16 @@ nav .blurb {
     letter-spacing: 0;
 }
 
-section > h2 {
+h2.page-title {
     color: #666666;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: left;
+    padding: 0 15px;
+    margin: .5em 0;
+    font-size: 24px;
 }
 
 a {
@@ -79,17 +82,10 @@ header h1 span {
     margin: 10px;
 }
 
-#posts-grid .post-square .post-image
+#posts-grid .post-square
 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
     background-position: center center;
     background-size: cover;
-    z-index: 1;
 }
 
 #posts-grid .post-square .post-meta 
@@ -104,7 +100,6 @@ header h1 span {
     background: rgba(0,0,0,0.55);
     text-align: center;
     word-wrap: break-word;
-    z-index: 2;
 }
 
 #posts-grid .post-square .post-meta .post-titles 
@@ -116,23 +111,25 @@ header h1 span {
 
 #posts-grid .post-square .post-meta .post-titles h1 
 {
-    margin-bottom: 5px;
+    margin: 70px 0 0;
     font-size: 33px;
     text-transform: uppercase;
 }
 
 #posts-grid .post-square .post-meta .post-titles h2 
 {
+    margin: 15px 0 0;
     font-family: "adobe-garamond-pro", serif;
     font-size: 25px;
     font-style: italic;
+    font-weight: normal;
 }
 
 #posts-grid .post-square .post-meta .post-date 
 {
     position: absolute;
     width: 100%;
-    bottom: 25px;
+    bottom: 15px;
 
     font-family: "adobe-garamond-pro", serif;
     font-size: 20px;
