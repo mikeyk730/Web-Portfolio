@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-$posts = app\models\Post::getPosts($user_id);
 $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
 $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
 ?>

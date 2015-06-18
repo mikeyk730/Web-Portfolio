@@ -161,7 +161,7 @@ if (jQuery)(function() {
 
     function debug(s) {
         if ($.fn.cycle.debug)
-            log(s);
+            console.log(s);
     }
 
     function log() {

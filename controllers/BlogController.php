@@ -58,9 +58,10 @@ class BlogController extends Controller
 
     public function actionIndex($user_id=100)
     {
+        $posts = Post::getPosts($user_id);
         $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
         $this->layout = $is_mobile ? 'mobile' : 'albums';
-        return $this->render('list', array('user_id' => $user_id));
+        return $this->render('list', array('posts' => $posts, 'user_id' => $user_id));
     }
 
     /**
