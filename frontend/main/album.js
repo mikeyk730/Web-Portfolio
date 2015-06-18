@@ -5010,6 +5010,13 @@ $(document).ready(function() {
         if (typeof peek != "undefined") rsn.peek();
         rsn.analytics();
         if ($('#confirmation').length > 0) rsn.confirmation();
+
+        $('.post-square').click(function(e){
+            var url = $(this).find('a').attr('href');
+            window.location = url;
+            return false;
+        });
+
     } catch (error) {
         alert(error);
     }

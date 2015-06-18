@@ -12,7 +12,7 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
 	    </h1>
         </div>
             <?= $this->render('//album/nav', 
-                   ['user_id' => $user_id, 'album_id' => 0]); ?>
+                   ['user_id' => $user_id, 'album_id' => 'blog']); ?>
         </header> 
     <div id="content">
         <h2 class="page-title">Blog</h2>

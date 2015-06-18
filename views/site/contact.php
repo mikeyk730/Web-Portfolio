@@ -10,7 +10,16 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
+<div class="left" id="container">
+    <div id="layout">
+        <header>
+	    <h1>
+                <?= Html::a('<span>{mk}</span>', ['/album/home']); ?>
+	    </h1>
+            <?= $this->render('//album/nav', ['album_id' => 'contact']); ?>
+        </header>
+
+<div class="site-contact" id="content">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
@@ -54,4 +63,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <?php endif; ?>
+</div>
+        <footer>
+            <p class="copyright">&copy; 2015 Mike Kaminski</p>
+        </footer>
+    </div>
 </div>

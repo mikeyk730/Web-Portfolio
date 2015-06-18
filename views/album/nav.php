@@ -1,7 +1,17 @@
 <?php
 use yii\helpers\Html;
-
+if (!isset($user_id)) $user_id = 100;
 $groups = app\models\Group::getGroups($user_id);
+
+function addItem($name, $url, $is_selected)
+{
+    $options = [];
+    if ($is_selected){
+        $options["class"] = "selected";
+    }
+    return Html::tag('li', Html::a($name, $url), $options);
+}
+
 ?>
 
 <nav>
@@ -17,16 +27,12 @@ $groups = app\models\Group::getGroups($user_id);
             }
             $first = false;
             foreach($group->albums as $album){
-                $options = [];
-                if ($album->id == $album_id){
-                    $options["class"] = "selected";
-                }
-                $a = Html::a($album->title, ['album/view', 'url_text' => $album->url_text]);
-                echo Html::tag('li', $a, $options);
+                echo addItem($album->title, ['album/view', 'url_text' => $album->url_text], $album->id == $album_id);
             }
         }
-        $a = Html::a('Blog', ['blog/index']);
-        echo Html::tag('li', $a);
+        echo addItem('Blog', ['blog/index'], strcmp('blog', $album_id) == 0);
+        //echo addItem('Contact', ['site/contact'], strcmp('contact', $album_id) == 0);
+        //echo addItem('About', ['site/about'], strcmp('about', $album_id) == 0);
         ?>
     </ul>
 </nav>

@@ -9,6 +9,10 @@ body {
     display: none;
 }
 
+.left div.tile {
+    padding: 5px;
+}
+
 .centered #layout {
     width: 900px;
 }
@@ -297,7 +301,10 @@ body nav a:hover {
     width: 900px;
 }
 
-.sidescroll .images li { margin-top: 40px; vertical-align: top; }
+.sidescroll .images li { 
+    margin-top: 5px; 
+    vertical-align: top; 
+}
 header h1{
     white-space:nowrap;
 }
@@ -371,7 +378,7 @@ body{
     transition: opacity 340ms cubic-bezier(0.42, 0, 0.585, 1.23);
 }
 
-#posts-grid {
+#content {
     padding: 35px 0px;
 }
 
