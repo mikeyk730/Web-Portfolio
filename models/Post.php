@@ -88,6 +88,7 @@ class Post extends \yii\db\ActiveRecord
     public static function getPosts($user_id)
     {
         return self::find()->where('user_id = :user_id', [':user_id' => $user_id])
+                           ->andWhere('is_published = 1')
                            ->orderBy('date DESC')
                            ->all();
     }
