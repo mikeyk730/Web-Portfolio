@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Album */
 
 ?>
-
+<div class="square-tiles">
 <div class="grid native">
     <ul class="thumbs">
         <?php 
@@ -22,4 +22,5 @@ use yii\helpers\Html;
         }
         ?>
     </ul>
+</div>
 </div>
