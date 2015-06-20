@@ -16,8 +16,11 @@ use yii\helpers\Html;
                     "data-dimensions" => $photo->width."x".$photo->height,
                     "id" => $photo->filename,
                 ));
-                echo '<li>'.$img.'</li>';
-            } 
+                $div = "";
+                if ($photo->title || $photo->description)
+                    $div = '<div><h4>'.$photo->title.'</h4><div class="description">'.$photo->description.'</div></div>';
+                echo '<li>'.$img.$div.'</li>';
+            }
         }
         ?>
     </ul>

@@ -379,7 +379,7 @@ body{
 }
 
 #content {
-    padding: 35px 0px;
+    margin-top: 35px;
 }
 
 #posts-grid .squares:after {

@@ -4314,34 +4314,37 @@ rsn.sideScroll.resize = function() {
     var marginTop = parseInt($('.images > li:first-child').css('margin-top'));
     var marginBottom = parseInt($('.images > li:first-child').css('margin-bottom'));
     if ($('.layout-header-wide').length > 0) {
-        log('Resizing sidescroll layout for "header wide" layout');
+        console.log('Resizing sidescroll layout for "header wide" layout');
         var imagesHeight = rsn.sideScroll.availableSpace();
         $('.sidescroll .images').css({
             'line-height': imagesHeight + 'px',
             'height': imagesHeight + 'px'
         });
     } else {
-        log('Resizing sidescroll layout for "sidebar" layout');
+        console.log('Resizing sidescroll layout for "sidebar" layout');
         var windowHeight = (platform.browser.name == "msie" ? document.documentElement.clientHeight : $('html')[0].clientHeight);
+        var contentMarginTop = parseInt($('#content').css('margin-top'));
+        var contentMarginBottom = parseInt($('#content').css('margin-bottom'));
+        windowHeight = windowHeight - contentMarginTop - contentMarginBottom;
         var sidebarWidth = $('header').width();
         var contentWidth = windowWidth - sidebarWidth;
         var imagesHeight = windowHeight;
-        log('imagesHeight:' + imagesHeight);
+        console.log('imagesHeight:' + imagesHeight);
         $('.sidescroll .images').css({
             'height': imagesHeight + 'px',
             'line-height': windowHeight - 30 + 'px'
         });
         if (marginTop > 0 || marginBottom > 0) {
-            log('adjusting heights for top/bottom margin thats been set');
+            console.log('adjusting heights for top/bottom margin thats been set');
             var maxHeight = windowHeight - marginTop - marginBottom;
             $('.images > li').css({
                 'max-height': maxHeight + 'px'
             });
         }
     }
-    log(platform);
+    console.log(platform);
     if (platform.browser.engine == "gecko" || platform.browser.name == "msie") {
-        log('Resizing for Firefox/IE');
+        console.log('Resizing for Firefox/IE');
         var maxHeight = parseInt(imagesHeight * .96);
         $('.images img:not(.blocker)').css('max-height', maxHeight + 'px');
     }
