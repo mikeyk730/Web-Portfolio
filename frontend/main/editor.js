@@ -44,3 +44,16 @@ $('.action.hide').click(function(e){
         }
     });
 });
+
+$('label.layout').click(function(e){
+    e.preventDefault();
+    var input = $(this).find('input');
+    var type = input.attr('value');
+    $.ajax({
+        type: "POST",
+        url: $('fieldset').attr('data-edit-url'),
+        data: { 'Album': {
+            'type': type
+        } }
+    });
+});

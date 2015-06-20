@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -8,10 +7,29 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Album */
 
 $this->title = $model->title;
+
+$layouts = [
+    ['value' => 'carousel', 'title' => 'Carousel'],
+    ['value' => 'grid', 'title' => 'Thumbnail'],
+    ['value' => 'tile', 'title' => 'Tiles'],
+    ['value' => 'list', 'title' => 'Vertical'],
+    ['value' => 'sidescroll', 'title' => 'Horizontal'],
+]
 ?>
 <div class="album-edit">
 
     <h1><?= Html::a($this->title, ['album/view', 'id'=>$model->id]) ?></h1>
+
+    <fieldset class="gallery_layout layout page" data-edit-url="<?=Yii::$app->urlManager->createUrl(['album/edit', 'id' => $model->id])?>">
+	<legend>Layout</legend>
+	<?php foreach($layouts as $layout) { 
+        $selected = ($model->type == $layout['value']) ? ' selected' : ''?>
+	<label class="layout <?=$layout['value'].$selected?>" title="<?=$layout['title']?>">
+		<input type="radio" name="layout" value="<?=$layout['value']?>">
+		<em><?=$layout['title']?></em>
+	</label>
+        <?php } ?>
+    </fieldset>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'file[]')->label('Add photos')->fileInput(['multiple' => true]) ?>

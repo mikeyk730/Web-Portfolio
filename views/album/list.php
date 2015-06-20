@@ -12,7 +12,7 @@ use yii\helpers\Html;
         <?php 
         foreach($model->photos as $photo) {
             if (!$photo->hide_on_pc) {
-                $img = Html::img($photo->getUrl(400), array(
+                $img = Html::img($photo->getUrl(1600), array(
                     "data-dimensions" => $photo->width."x".$photo->height,
                     "id" => $photo->filename,
                 ));

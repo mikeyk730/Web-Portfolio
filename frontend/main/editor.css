@@ -126,3 +126,143 @@ a:hover{
 input[type='file'] {
   color: transparent;
 }
+
+fieldset.toggle {
+    display: none;
+}
+fieldset.layout {
+    border: none;
+}
+fieldset.layout legend {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, .4);
+    margin-bottom: 2px;
+}
+fieldset.layout legend small {
+    text-transform: none;
+    font-size: 1em;
+}
+fieldset.layout label {
+    float: left;
+    clear: none;
+    width: 100px;
+    height: 115px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: #2d2f32;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    position: relative;
+    background-size: 80% auto;
+    -webkit-transition: opacity 0.15s ease-out;
+    -moz-transition: opacity 0.15s ease-out;
+    -ms-transition: opacity 0.15s ease-out;
+    -o-transition: opacity 0.15s ease-out;
+    transition: opacity 0.15s ease-out;
+}
+fieldset.layout label:hover {
+    opacity: 0.5;
+}
+fieldset.layout label.selected {
+    opacity: 1;
+    cursor: default;
+}
+fieldset.layout label em {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    text-align: center;
+    font-style: normal;
+}
+fieldset.layout label input {
+    display: none;
+}
+fieldset.layout label.header {
+    background-image: url('assets/layout-header.png');
+}
+fieldset.layout label.sidebar {
+    background-image: url('assets/layout-sidebar.png');
+}
+fieldset.layout label.carousel {
+    background-image: url('assets/layout-carousel.svg');
+}
+fieldset.layout label.grid {
+    background-image: url('assets/layout-grid.svg');
+}
+fieldset.layout label.tile {
+    background-image: url('assets/layout-tile.svg');
+}
+fieldset.layout label.list {
+    background-image: url('assets/layout-list.svg');
+}
+fieldset.layout label.sidescroll {
+    background-image: url('assets/layout-horizontal.svg');
+}
+fieldset.layout label.slideshow {
+    background-image: url('assets/layout-slideshow.svg');
+}
+fieldset.layout label.text-left {
+    background-image: url('assets/layout-text-left.svg');
+}
+fieldset.layout label.text-right {
+    background-image: url('assets/layout-text-right.svg');
+}
+fieldset.layout label.text-centered {
+    background-image: url('assets/layout-text-centered.svg');
+}
+fieldset.layout {
+    clear: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 270px;
+}
+fieldset.layout legend {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, .4);
+    margin-bottom: 2px;
+}
+fieldset.layout legend small {
+    display: none;
+}
+fieldset.layout label {
+    width: 40px;
+    height: 30px;
+    margin: 0 10px 0 0;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+fieldset.layout em {
+    display: none;
+}
+fieldset.layout.medium {
+    clear: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 350px;
+}
+fieldset.layout.medium legend {
+    display: none;
+}
+fieldset.layout.medium label {
+    width: 100px;
+    height: 77px;
+    margin: 0 2px 0 0;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.field-album-file
+{
+margin: 25px 0 10px;
+}
