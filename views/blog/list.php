@@ -19,6 +19,10 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
         <div id="posts-grid">
             <div class="squares">
                 <?php  
+                if (count($posts) == 0){
+                    echo '<h1 style="text-align:left">There are no posts yet.</h1>';
+                }
+
                 $first = true;
                 foreach($posts as $post){
                     $class = "post-square";

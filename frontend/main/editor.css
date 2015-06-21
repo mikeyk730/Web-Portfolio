@@ -264,5 +264,33 @@ fieldset.layout.medium label {
 }
 .field-album-file
 {
-margin: 25px 0 10px;
+    margin: 25px 0 10px;
 }
+
+#dialog-form fieldset > *
+{
+    margin-bottom: 10px;
+}
+
+#dialog-form fieldset > label
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#dialog-form fieldset
+{
+    border: none
+}
+
+#dialog-form fieldset > *
+{
+    display: block;
+    width: 590px;
+}
+
+#dialog-form textarea
+{
+    height: 150px;
+}
+

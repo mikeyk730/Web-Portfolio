@@ -20,7 +20,7 @@ $layouts = [
 
     <h1><?= Html::a($this->title, ['album/view', 'id'=>$model->id]) ?></h1>
 
-    <fieldset class="gallery_layout layout page" data-edit-url="<?=Yii::$app->urlManager->createUrl(['album/edit', 'id' => $model->id])?>">
+    <fieldset id="layout-controls" class="gallery_layout layout page" data-edit-url="<?=Yii::$app->urlManager->createUrl(['album/edit', 'id' => $model->id])?>">
 	<legend>Layout</legend>
 	<?php foreach($layouts as $layout) { 
         $selected = ($model->type == $layout['value']) ? ' selected' : ''?>
@@ -43,11 +43,21 @@ $layouts = [
         if ($hidden) {
             $options['class'] = "hidden";
         }
-        $img = Html::img($photo->getUrl(400));
+        $img = Html::img($photo->getUrl(400), ['data-title' => $photo->title, 'data-description' => $photo->description]);
         $content = '<div class="thumb-container image"><div class="thumb">'.$img.'<a href="#" class="action remove"></a><a href="#" class="action hide"></a><a href="#" class="action details"></a><a href="#" class="action sort"></a></div>';
         echo Html::tag('li', $content, $options);
     } 
     echo '</ul>';
     ?> 
 
+</div>
+<div id="dialog-form" title="Edit Details" style="display:none">
+  <form>
+    <fieldset>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
+      <label for="email">Description</label>
+      <textarea name="description" id="description" class="text ui-widget-content ui-corner-all"></textarea>
+     </fieldset>
+  </form>
 </div>

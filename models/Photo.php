@@ -42,7 +42,8 @@ class Photo extends \yii\db\ActiveRecord
             [['user_id', 'album_id', 'position', 'width', 'height', 'hide_on_mobile', 'hide_on_pc'], 'integer'],
             [['aspect_ratio'], 'number'],
             [['filename'], 'string', 'max' => 200],
-            [['content_type'], 'string', 'max' => 45]
+            [['description'], 'string', 'max' => 512],
+            [['content_type', 'title'], 'string', 'max' => 45]
         ];
     }
 

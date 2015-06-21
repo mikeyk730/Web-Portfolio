@@ -10,34 +10,34 @@ class RbacController extends Controller
     {
         $auth = Yii::$app->authManager;
 
-        // add "createAlbum" permission
-        $createAlbum = $auth->createPermission('createAlbum');
-        $createAlbum->description = 'Create albums';
-        $auth->add($createAlbum);
+        // add "createContent" permission
+        $createContent = $auth->createPermission('createContent');
+        $createContent->description = 'Create contents';
+        $auth->add($createContent);
 
-        // add "author" role and give this role the "createAlbum" permission
+        // add "author" role and give this role the "createContent" permission
         $author = $auth->createRole('author');
         $auth->add($author);
-        $auth->addChild($author, $createAlbum);
+        $auth->addChild($author, $createContent);
 
         // add the author rule
         $rule = new \app\rbac\AuthorRule;
         $auth->add($rule);
 
-        // add the "modifyOwnAlbum" permission and associate the rule with it.
-        $modifyOwnAlbum = $auth->createPermission('modifyOwnAlbum');
-        $modifyOwnAlbum->description = 'Modify own album';
-        $modifyOwnAlbum->ruleName = $rule->name;
-        $auth->add($modifyOwnAlbum);
+        // add the "modifyOwnContent" permission and associate the rule with it.
+        $modifyOwnContent = $auth->createPermission('modifyOwnContent');
+        $modifyOwnContent->description = 'Modify own content';
+        $modifyOwnContent->ruleName = $rule->name;
+        $auth->add($modifyOwnContent);
 
-        // "modifyOwnAlbum" will be used from "modifyAlbum"
-        $modifyAlbum = $auth->createPermission('modifyAlbum');
-        $modifyAlbum->description = 'Modify albums';
-        $auth->add($modifyAlbum);
-        $auth->addChild($modifyOwnAlbum, $modifyAlbum);
+        // "modifyOwnContent" will be used from "modifyContent"
+        $modifyContent = $auth->createPermission('modifyContent');
+        $modifyContent->description = 'Modify contents';
+        $auth->add($modifyContent);
+        $auth->addChild($modifyOwnContent, $modifyContent);
         
-        // allow "author" to modify their own albums
-        $auth->addChild($author, $modifyOwnAlbum);
+        // allow "author" to modify their own contents
+        $auth->addChild($author, $modifyOwnContent);
 
         $auth->assign($author, 100);
         $auth->assign($author, 101);
