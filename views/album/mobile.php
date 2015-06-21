@@ -29,7 +29,10 @@ $this->title = $model->title;
                 foreach($model->photos as $photo) {
                     if (!$photo->hide_on_mobile) {
                         $img = Html::img($photo->getUrl(400), ['data-src' => $photo->getUrl(800)]);
-                        echo '<li>'.$img.'</li>';
+                        $div = "";
+                        if ($photo->title || $photo->description)
+                            $div = '<div><h4>'.$photo->title.'</h4><div class="description"><p>'.$photo->description.'</p></div></div>';
+                        echo '<li>'.$img.$div.'</li>';
                     }
                 }
                 ?>
