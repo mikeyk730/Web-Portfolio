@@ -16,7 +16,10 @@ use yii\helpers\Html;
                     "data-dimensions" => $photo->width."x".$photo->height,
                     "id" => $photo->filename,
                 ));
-                $a = Html::a($img, $photo->getUrl('1600'));
+                $div = "";
+                if ($photo->title || $photo->description)
+                    $div = '<div><h4>'.$photo->title.'</h4><div class="description">'.$photo->description.'</div></div>';
+                $a = Html::a($img.$div, $photo->getUrl('1600'));
                 echo '<li>'.$a.'</li>';
             } 
         }
