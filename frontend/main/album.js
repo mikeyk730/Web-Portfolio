@@ -3864,8 +3864,8 @@ lightbox.next = function(direction) {
             return false;
         }
         var image = $new.find('a').attr('href');
-        var title = null;//$new.find('h4').text();
-        var description = $new.find('div').html();
+        var title = $new.find('h4').text();
+        var description = $new.find('div.description').html();
         var alt = $new.find('img').attr('alt');
         var dimensions = $new.find('img').data('dimensions');
         lightbox.show(image, title, description, alt, dimensions);
