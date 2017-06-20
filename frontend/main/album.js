@@ -3809,7 +3809,7 @@ lightbox.start = function() {
             var image = $this.attr('href');
             var title = $this.children('h4').text();
             var description = $this.children('div').html();
-            var alt = $this.attr('title');
+            var alt = $this.find('img').attr('alt');
             var dimensions = $this.find('img').data('dimensions');
             lightbox.show(image, title, description, alt, dimensions);
             if (image.match('flickr')) $('#overlay').addClass('flickr');
@@ -3900,7 +3900,8 @@ lightbox.show = function(image, title, description, alt, dimensions) {
             $('#overlay img').addClass('landscape');
         }
         if (title || description) {
-            $('#overlay > div').append('<div class="info show"></div>');
+            //$('#overlay > div').append('<div class="info show"></div>');
+            $('#overlay > div').append('<div class="info"></div>');
             if (title) $('#overlay .info').append('<h4>' + title + '</h4>');
             if (description) $('#overlay .info').append('<p>' + description + '</p>');
             $('#overlay .info').append('<a href="#" class="close">Close</a>');

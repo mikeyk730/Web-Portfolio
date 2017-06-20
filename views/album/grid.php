@@ -15,6 +15,7 @@ use yii\helpers\Html;
                 $img = Html::img($photo->getUrl(400), array(
                     "data-dimensions" => $photo->width."x".$photo->height,
                     "id" => $photo->filename,
+                    "alt" => $photo->title,
                 ));
                 $div = "";
                 if ($photo->title || $photo->description)
