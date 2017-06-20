@@ -24,7 +24,7 @@ AppAsset::register($this);
 
 <?php $this->beginBody() ?>
     <div class="wrap">
-        <?php
+        <!--?php
             NavBar::begin([
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -44,7 +44,7 @@ AppAsset::register($this);
                 ],
             ]);
             NavBar::end();
-        ?>
+        ?-->
 
         <div class="container">
             <?= Breadcrumbs::widget([
@@ -54,11 +54,11 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <footer class="footer">
+    <!--footer class="footer">
         <div class="container">
             <p class="pull-left">&copy; Mike Kaminski <?= date('Y') ?></p>
         </div>
-    </footer>
+    </footer-->
 
 <?php $this->endBody() ?>
 </body>

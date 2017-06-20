@@ -40,10 +40,10 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+            //'captcha' => [
+            //    'class' => 'yii\captcha\CaptchaAction',
+            //    'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            //],
         ];
     }
 
@@ -87,8 +87,8 @@ class SiteController extends Controller
         }
     }
 
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
+    //public function actionAbout()
+    //{
+    //    return $this->render('about');
+    //}
 }
