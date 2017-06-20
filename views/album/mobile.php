@@ -35,6 +35,10 @@ $this->title = $model->title;
                         echo '<li>'.$img.$div.'</li>';
                     }
                 }
+
+                if (strcmp('custom', $model->type) == 0){
+                    echo $this->render($model->url_text, ['model' => $model]);
+                }
                 ?>
 	    </ul>
         </div>

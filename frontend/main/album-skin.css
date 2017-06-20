@@ -478,3 +478,51 @@ body{
 {
     opacity:1;
 }
+
+.site-contact {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.social-media-links img {
+    display: inline;
+}
+
+.site-contact input, .site-contact textarea {
+    background: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px;
+    border-width: 1px;
+    color: #333333;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 13px;
+    margin: 1px 0;
+    padding: 10px;
+
+    width: 480px;
+}
+
+.site-contact button {
+    color: #404040 !important;
+    background: #fafafa;
+    background-size: auto;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #404040;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    box-shadow: none;
+
+    width: 200px;
+}
+
+.help-block-error
+{
+    color:red
+}

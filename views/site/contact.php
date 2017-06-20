@@ -9,40 +9,41 @@ use yii\captcha\Captcha;
 
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
+$is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+$branding = $is_mobile ? '{m.kaminski}' : '{mk}';
 ?>
 <div class="left" id="container">
     <div id="layout">
         <header>
-	    <h1>
-                <?= Html::a('<span>{mk}</span>', ['/album/home']); ?>
-	    </h1>
+            <div>
+                <a class="menu" href="#">Menu</a>
+	        <h1>
+                    <?= Html::a('<span>'.$branding.'</span>', ['/album/home']); ?>
+	        </h1>
+            </div>
             <?= $this->render('//album/nav', ['album_id' => 'contact']); ?>
         </header>
 
 <div class="site-contact" id="content">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Social Media</h1>
+    <div class="social-media-links">
+        <p>
+        <a href="https://www.instagram.com/one_more_country"><img width="48" src="../main/assets/logo-instagram.png"></a>
+        <a href="https://www.500px.com/one_more_country"><img width="48" src="../main/assets/logo-500px.png"></a>
+    </p>
+    </div>
 
+    <h1>Email</h1>
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
     <div class="alert alert-success">
-        Thank you for contacting us. We will respond to you as soon as possible.
+        Thank you for contacting me.  I will respond to you as soon as possible.
     </div>
-
-    <p>
-        Note that if you turn on the Yii debugger, you should be able
-        to view the mail message on the mail panel of the debugger.
-        <?php if (Yii::$app->mailer->useFileTransport): ?>
-        Because the application is in development mode, the email is not sent but saved as
-        a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-        Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-        application component to be false to enable email sending.
-        <?php endif; ?>
-    </p>
 
     <?php else: ?>
 
     <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+        Feel free to contact me if you are interested in ordering prints or licensing an image.  I welcome any other questions or comments as well!
     </p>
 
     <div class="row">
@@ -50,11 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'email') ?>
-                <?= $form->field($model, 'subject') ?>
+                <!--?= $form->field($model, 'subject') ?-->
                 <?= $form->field($model, 'body')->textArea(['rows' => 6]) ?>
-                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                <!--?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                ]) ?>
+                ]) ?-->
                 <div class="form-group">
                     <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 </div>

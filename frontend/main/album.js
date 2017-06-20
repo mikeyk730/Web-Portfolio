@@ -3822,7 +3822,7 @@ lightbox.start = function() {
             setTimeout(function() {
                 $('#overlay').remove();
             }, 250);
-            window.location.hash = "none";
+            //TODO:window.location.hash = "none";
             return false;
         }
     });
@@ -3877,7 +3877,7 @@ lightbox.show = function(image, title, description, alt, dimensions) {
     var image = image.replace(/^#/, '');
     $('#overlay').html('<div class="image"></div><a class="paging back" href="#back">Back</a><a class="paging next" href="#next">Next</a>');
     var hash = image.split('/').pop().replace('.jpg', '');
-    window.location.hash = hash;
+    //TODO:window.location.hash = hash;
     imgLoader = new Image();
     imgLoader.onload = function(data) {
         log('==== dimensions ====');

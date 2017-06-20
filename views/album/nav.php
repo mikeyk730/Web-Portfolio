@@ -30,8 +30,10 @@ function addItem($name, $url, $is_selected)
                 echo addItem($album->title, ['album/view', 'url_text' => $album->url_text], $album->id == $album_id);
             }
         }
+
         echo addItem('Blog', ['blog/index'], strcmp('blog', $album_id) == 0);
-        //echo addItem('Contact', ['site/contact'], strcmp('contact', $album_id) == 0);
+        echo Html::tag('li', "&nbsp;&nbsp;&nbsp;&nbsp;", ["class"=>"spacer"]);
+        echo addItem('Contact', ['site/contact'], strcmp('contact', $album_id) == 0);
         //echo addItem('About', ['site/about'], strcmp('about', $album_id) == 0);
         ?>
     </ul>

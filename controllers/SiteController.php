@@ -72,7 +72,9 @@ class SiteController extends Controller
 
     public function actionContact()
     {
-        $this->layout = "albums";
+        $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
+        $this->layout = $is_mobile ? 'mobile' : 'albums';
+      
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
