@@ -160,6 +160,10 @@ div.description
     display: inline;
 }
 
+.site-contact .form-group {
+    width: 100%;
+}
+
 .site-contact input, .site-contact textarea {
     background: #FAFAFA;
     border: 1px solid #CCCCCC;
@@ -168,11 +172,11 @@ div.description
     color: #333333;
     font-family: 'Open Sans',sans-serif;
     font-size: 13px;
-    margin: 1px 0;
-    padding: 10px;
 
-    width: 90%;
-    horizontal-align:center;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .site-contact button {
@@ -187,10 +191,12 @@ div.description
     font-family: 'Open Sans',sans-serif;
     font-size: 14px;
     font-weight: bold;
-    padding: 10px 20px;
     text-transform: uppercase;
     box-shadow: none;
  
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
     width: 50%;
 }
 
