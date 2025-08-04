@@ -128,7 +128,7 @@ public static function var_error_log( $object=null ){
        $base = Url::home(true);
        $url = parse_url($base);
        
-       $host = $url['host'];
+       /*$host = $url['host'];
        $parts = explode('.', $host); 
        if (count($parts) > 1) {
           if (count($parts) == 2) {
@@ -136,7 +136,7 @@ public static function var_error_log( $object=null ){
           }         
           $parts[0] = Utility::getShardFromPath($path, $prefix, 4);
           $url["host"] = join('.', $parts);
-       }
+       }*/
        
        return Utility::http_build_url($base, $url).$path;
     }

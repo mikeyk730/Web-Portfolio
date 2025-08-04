@@ -18,9 +18,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $dbUser = self::find()
             ->where(["id" => $id])
             ->one();
-        if (!count($dbUser)) {
+        /*if (!count($dbUser)) {
             return null;
-        }
+        }*/
         return new static($dbUser);
     }
 
@@ -32,9 +32,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $dbUser = self::find()
             ->where(["access_token" => $token])
             ->one();
-        if (!count($dbUser)) {
+        /*if (!count($dbUser)) {
             return null;
-        }
+        }*/
         return new static($dbUser);
     }
 
@@ -49,9 +49,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $dbUser = self::find()
             ->where(["username" => $username])
             ->one();
-        if (!count($dbUser)) {
+        /*if (!count($dbUser)) {
             return null;
-        }
+        }*/
         return new static($dbUser);
     }
 
