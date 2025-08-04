@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'mkaminski_exposed',
-    'name' => '{m.kaminski}',
+    'name' => 'One More Country',
     'defaultRoute' => 'album/home',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'devicedetect'],

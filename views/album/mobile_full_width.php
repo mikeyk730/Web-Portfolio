@@ -7,7 +7,7 @@ use yii\helpers\Html;
     <ul class="images">
         <?php 
         $photo = $model->getRandomPhoto(true);
-        $img = Html::img($photo->getUrl(800), ['class'=>'img']);
+        $img = Html::img($photo->getUrl(1600), ['class'=>'img']);
         echo "<li>".$img."</li>";
         ?>
     </ul>

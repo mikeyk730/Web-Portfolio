@@ -8,7 +8,7 @@ use yii\helpers\Html;
         <?php 
         foreach($model->photos as $photo) {
             if (!$photo->hide_on_mobile) {
-                $img = Html::img($photo->getUrl(400), ['class'=>'img']);
+                $img = Html::img($photo->getUrl(800), ['class'=>'img']);
                 echo "<li>".$img."</li>";
             } 
         }

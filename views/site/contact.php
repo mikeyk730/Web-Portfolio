@@ -10,7 +10,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
-$branding = $is_mobile ? '{m.kaminski}' : '{mk}';
+$branding = $is_mobile ? '{one.more.country}' : '{omc}';
 ?>
 <div class="left" id="container">
     <div id="layout">

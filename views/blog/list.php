@@ -1,9 +1,9 @@
 <?php
 use yii\helpers\Html;
 $is_mobile = \Yii::$app->devicedetect->isMobile() && !\Yii::$app->devicedetect->isTablet();;
-$branding = $is_mobile ? '{m.kaminski}' : '{mk}';
+$branding = $is_mobile ? '{one.more.country}' : '{omc}';
 ?>
-<div class="left">  
+<div class="left">
     <header>
 	<div>
 	    <a class="menu" href="#">Menu</a>
@@ -11,14 +11,14 @@ $branding = $is_mobile ? '{m.kaminski}' : '{mk}';
                 <?= Html::a('<span>'.$branding.'</span>', ['/album/home']); ?>
 	    </h1>
         </div>
-            <?= $this->render('//album/nav', 
+            <?= $this->render('//album/nav',
                    ['user_id' => $user_id, 'album_id' => 'blog']); ?>
-        </header> 
+        </header>
     <div id="content">
         <h2 class="page-title">Blog</h2>
         <div id="posts-grid">
             <div class="squares">
-                <?php  
+                <?php
                 if (count($posts) == 0){
                     echo '<h1 style="text-align:left">There are no posts yet.</h1>';
                 }

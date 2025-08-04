@@ -13,22 +13,22 @@ $this->title = $model->title;
 	<div>
 	    <a class="menu" href="#">Menu</a>
 	    <h1>
-		<?= Html::a('<span>{m.kaminski}</span>', ['album/home']);?>
+		<?= Html::a('<span>{one.more.country}</span>', ['album/home']);?>
 	    </h1>
 	</div>
-            <?= $this->render('nav', 
+            <?= $this->render('nav',
                    ['user_id' => $model->user_id, 'album_id' => $model->id]); ?>
 
     </header>
-    
+
     <section>
         <h2 class="page-title"><?= $model->title ?></h2>
         <div>
     	    <ul class="images">
-                <?php 
+                <?php
                 foreach($model->photos as $photo) {
                     if (!$photo->hide_on_mobile) {
-                        $img = Html::img($photo->getUrl(400), ['data-src' => $photo->getUrl(800)]);
+                        $img = Html::img($photo->getUrl(800), ['data-src' => $photo->getUrl(800)]);
                         $div = "";
                         if ($photo->title || $photo->description)
                             $div = '<div><h4>'.$photo->title.'</h4><div class="description"><p>'.$photo->description.'</p></div></div>';
